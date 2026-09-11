@@ -1,3 +1,33 @@
+# proyectgio02
+
+Pequeño proyecto React con un formulario de registro y una barra que muestra la fuerza de la contraseña en tiempo real.
+
+## Características
+- Formulario de registro con campos: nombre, correo, contraseña y confirmación.
+- Evaluación de fuerza de contraseña (puntaje 0-100) mientras se escribe.
+- Barra visual de fuerza y etiqueta (`Muy débil`, `Débil`, `Aceptable`, `Buena`, `Excelente`).
+
+## Ejecutar localmente
+1. Instala dependencias:
+
+```bash
+npm install
+```
+
+2. Ejecuta la app en modo desarrollo:
+
+```bash
+npm start
+```
+
+3. Abre http://localhost:3000 en tu navegador.
+
+## Ramificación remota
+La rama local `master` fue empujada a la rama remota `trabajo` en GitHub: https://github.com/Jeanpollcardenas/trabajo
+
+## Notas
+- El archivo con estilo principal es `src/App.css`.
+- El componente principal del formulario está en `src/App.js`.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

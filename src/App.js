@@ -94,10 +94,11 @@ function Registro() {
   };
 
   return (
-    <div>
-      <h2>Formulario de Registro</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="registro-page">
+      <h2 className="registro-title">Formulario de Registro</h2>
+
+      <form className="registro-form" onSubmit={handleSubmit}>
+        <div className="registro-field">
           <label> Nombre:</label>
           <input
             type="text"
@@ -107,7 +108,7 @@ function Registro() {
           />
           {errors.nombre && <p style={{ color: 'red' }}>{errors.nombre}</p>}
         </div>
-        <div>
+        <div className="registro-field">
           <label>Correo:</label>
           <input
             type="email"
@@ -117,7 +118,7 @@ function Registro() {
           />
           {errors.correo && <p style={{ color: 'red' }}>{errors.correo}</p>}
         </div>
-        <div>
+        <div className="registro-field">
           <label>Contraseña:</label>
           <input
             type="password"
@@ -136,7 +137,7 @@ function Registro() {
             <div className="strength-label">{getPasswordLabel(passwordScore)}</div>
           </div>
         </div>
-        <div>
+        <div className="registro-field">
           <label>Confirmar Contraseña:</label>
           <input
             type="password"

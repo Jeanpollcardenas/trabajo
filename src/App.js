@@ -154,4 +154,116 @@ function Registro() {
   );
 }
 
-export default Registro;
+function Dados() {
+  const [caras, setCaras] = useState(6);
+  const [cantidad, setCantidad] = useState(1);
+  const [resultados, setResultados] = useState([]);
+
+  const lanzarDados = () => {
+    const nuevosResultados = Array.from({ length: cantidad }, () => (
+      Math.floor(Math.random() * caras) + 1
+    ));
+    setResultados(nuevosResultados);
+  };
+
+  return (
+    <section className="tool-card">
+      <div className="tool-heading">
+        <span className="tool-kicker">Herramienta 02</span>
+        <h2>Lanza los dados</h2>
+        <p>Elige el tipo y la cantidad de dados para obtener un resultado al instante.</p>
+      </div>
+      <div className="controls-grid">
+        <label>
+          Caras del dado
+          <select value={caras} onChange={(event) => setCaras(Number(event.target.value))}>
+            <option value="4">D4</option>
+            <option value="6">D6</option>
+            <option value="8">D8</option>
+            <option value="10">D10</option>
+            <option value="12">D12</option>
+            <option value="20">D20</option>
+          </select>
+        </label>
+        <label>
+          Cantidad
+          <input type="number" min="1" max="10" value={cantidad} onChange={(event) => setCantidad(Math.min(10, Math.max(1, Number(event.target.value) || 1)))} />
+        </label>
+      </div>
+      <button className="tool-button" type="button" onClick={lanzarDados}>Lanzar dados</button>
+      <div className="results-panel" aria-live="polite">
+        {resultados.length ? resultados.map((resultado, index) => <span className="result-die" key={`${resultado}-${index}`}>{resultado}</span>) : <span className="empty-result">Tus resultados aparecerán aquí</span>}
+      </div>
+      {resultados.length > 1 && <p className="result-total">Total: <strong>{resultados.reduce((total, resultado) => total + resultado, 0)}</strong></p>}
+    </section>
+  );
+}
+
+function NumerosAleatorios() {
+  const [minimo, setMinimo] = useState(1);
+  const [maximo, setMaximo] = useState(100);
+  const [cantidad, setCantidad] = useState(1);
+  const [resultados, setResultados] = useState([]);
+
+  const generarNumeros = () => {
+    const limiteInferior = Math.min(minimo, maximo);
+    const limiteSuperior = Math.max(minimo, maximo);
+    const nuevosResultados = Array.from({ length: cantidad }, () => (
+      Math.floor(Math.random() * (limiteSuperior - limiteInferior + 1)) + limiteInferior
+    ));
+    setResultados(nuevosResultados);
+  };
+
+  return (
+    <section className="tool-card">
+      <div className="tool-heading">
+        <span className="tool-kicker">Herramienta 03</span>
+        <h2>Genera números</h2>
+        <p>Define un rango y crea números aleatorios sin repetir el proceso manualmente.</p>
+      </div>
+      <div className="controls-grid numbers-controls">
+        <label>
+          Desde
+          <input type="number" value={minimo} onChange={(event) => setMinimo(Number(event.target.value))} />
+        </label>
+        <label>
+          Hasta
+          <input type="number" value={maximo} onChange={(event) => setMaximo(Number(event.target.value))} />
+        </label>
+        <label>
+          Cantidad
+          <input type="number" min="1" max="20" value={cantidad} onChange={(event) => setCantidad(Math.min(20, Math.max(1, Number(event.target.value) || 1)))} />
+        </label>
+      </div>
+      <button className="tool-button" type="button" onClick={generarNumeros}>Generar números</button>
+      <div className="results-panel" aria-live="polite">
+        {resultados.length ? resultados.map((resultado, index) => <span className="result-number" key={`${resultado}-${index}`}>{resultado}</span>) : <span className="empty-result">Tus números aparecerán aquí</span>}
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  const [herramienta, setHerramienta] = useState('registro');
+
+  return (
+    <main className="app-shell">
+      <header className="app-header">
+        <div>
+          <span className="brand-mark">AZAR</span>
+          <p>Herramientas rápidas para jugar, probar y decidir.</p>
+        </div>
+        <nav className="tool-nav" aria-label="Herramientas">
+          <button className={herramienta === 'registro' ? 'active' : ''} type="button" onClick={() => setHerramienta('registro')}>Registro</button>
+          <button className={herramienta === 'dados' ? 'active' : ''} type="button" onClick={() => setHerramienta('dados')}>Dados</button>
+          <button className={herramienta === 'numeros' ? 'active' : ''} type="button" onClick={() => setHerramienta('numeros')}>Números aleatorios</button>
+        </nav>
+      </header>
+      {herramienta === 'registro' && <Registro />}
+      {herramienta === 'dados' && <Dados />}
+      {herramienta === 'numeros' && <NumerosAleatorios />}
+    </main>
+  );
+}
+
+export default App;

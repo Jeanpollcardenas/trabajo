@@ -89,3 +89,215 @@
   min-width: 70px;
   text-align: left;
 }
+
+.app-shell {
+  min-height: 100vh;
+  padding: 42px 24px 64px;
+  color: #172033;
+}
+
+.app-header,
+.tool-card {
+  width: min(100%, 880px);
+  margin: 0 auto;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.brand-mark {
+  color: #123c35;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  color: #64748b;
+}
+
+.tool-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.tool-nav button {
+  border: 1px solid #d7dee8;
+  border-radius: 999px;
+  padding: 10px 15px;
+  background: #fff;
+  color: #526074;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tool-nav button:hover,
+.tool-nav button.active {
+  border-color: #123c35;
+  background: #123c35;
+  color: #fff;
+}
+
+.tool-card {
+  box-sizing: border-box;
+  padding: 34px;
+  background: #fff;
+  border: 1px solid #e1e7ee;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.09);
+}
+
+.tool-heading {
+  margin-bottom: 28px;
+}
+
+.tool-kicker {
+  color: #d05b3f;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tool-heading h2 {
+  margin: 8px 0 6px;
+  color: #172033;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+.tool-heading p {
+  margin: 0;
+  color: #64748b;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.numbers-controls {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.controls-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.controls-grid input,
+.controls-grid select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #172033;
+  font: inherit;
+}
+
+.controls-grid input:focus,
+.controls-grid select:focus {
+  outline: 3px solid rgba(208, 91, 63, 0.2);
+  border-color: #d05b3f;
+}
+
+.tool-button {
+  border: 0;
+  border-radius: 9px;
+  padding: 13px 18px;
+  background: #d05b3f;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tool-button:hover {
+  background: #b94b32;
+}
+
+.results-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  min-height: 92px;
+  margin-top: 26px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f1f5f9;
+}
+
+.empty-result {
+  color: #94a3b8;
+}
+
+.result-die,
+.result-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background: #123c35;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.result-number {
+  width: auto;
+  min-width: 58px;
+  padding: 0 12px;
+  background: #e7b84b;
+  color: #172033;
+}
+
+.result-total {
+  margin: 14px 0 0;
+  color: #64748b;
+}
+
+.result-total strong {
+  color: #172033;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 28px 16px 44px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tool-nav {
+    justify-content: flex-start;
+  }
+
+  .tool-card {
+    padding: 24px 18px;
+  }
+
+  .controls-grid,
+  .numbers-controls {
+    grid-template-columns: 1fr;
+  }
+}
